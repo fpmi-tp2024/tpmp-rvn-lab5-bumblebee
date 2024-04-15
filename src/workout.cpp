@@ -3,6 +3,10 @@
 Workout::Workout(int id, int duration, WorkoutType type, const Date& date)
     : id(id), duration(duration), type(type), date(date) {}
 
+Workout::Workout(){
+    
+}
+
 double Workout::calculateCalories() const {
     double calories = 0.0;
     
@@ -47,6 +51,10 @@ bool Workout::setDate(const Date& newDate) {
 bool Workout::validate() const {
 
     return duration > 0 && date.validate();
+}
+
+int Workout::getId(){
+    return id;
 }
 
 void Workout::printInfo() const {

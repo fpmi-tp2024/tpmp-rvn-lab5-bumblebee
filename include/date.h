@@ -10,6 +10,7 @@ private:
     int year;
 
 public:
+    Date();
     Date(int day, int month, int year);
     int getDay() const;
     int getMonth() const;

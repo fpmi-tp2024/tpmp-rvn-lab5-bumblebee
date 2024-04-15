@@ -1,9 +1,14 @@
 #include "../include/user.h"
 
+
+User::User(std::string name, int age, double height, double weight):
+    name(name),age(age),height(height),weight(weight){}
 std::string User::getName() const {
     return name;
 }
-
+User::User(){
+    
+}
 int User::getAge() const {
     return age;
 }

@@ -12,6 +12,8 @@ private:
     double weight;
 
 public:
+    User();
+    User(std::string name, int age, double height, double weight);
     std::string getName() const;
     int getAge() const;
     double getHeight() const;

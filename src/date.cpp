@@ -3,6 +3,8 @@
 Date::Date(int day, int month, int year)
     : day(day), month(month), year(year) {}
 
+Date::Date(){
+}
 int Date::getDay() const {
     return day;
 }
@@ -43,7 +45,6 @@ bool Date::setYear(int newYear) {
 }
 
 bool Date::validate() const {
-    // You can add additional validation logic here if needed
     return day >= 1 && day <= 31 && month >= 1 && month <= 12 && year >= 0;
 }
 

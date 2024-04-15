@@ -31,11 +31,13 @@ private:
     Date date;
 
 public:
+    Workout();
     Workout(int id, int duration, WorkoutType type, const Date& date);
     double calculateCalories() const;
     int getDuration() const;
     WorkoutType getType() const;
     const Date& getDate() const;
+    int getId();
     bool setDuration(int newDuration);
     bool setType(WorkoutType newType);
     bool setDate(const Date& newDate);
