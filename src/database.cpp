@@ -15,3 +15,43 @@ std::vector<Workout> Database::getWorkouts(){
     v.push_back(workout3);
     return v;
 }
+
+std::vector<Goal> Database::getGoals()
+{
+    return std::vector<Goal>();
+}
+
+bool Database::deleteWorkout(Workout workout)
+{
+    return false;
+}
+
+bool Database::deleteGoal(Goal goal)
+{
+    return false;
+}
+
+bool Database::addWorkout(Workout workout)
+{
+    return false;
+}
+
+bool Database::addGoal(Goal goal)
+{
+    return false;
+}
+
+bool Database::editWorkout(Workout workout)
+{
+    return false;
+}
+
+bool Database::editGoal(Goal goal)
+{
+    return false;
+}
+
+bool Database::editProfile(User user)
+{
+    return false;
+}

@@ -12,24 +12,32 @@ void Terminal::start(){
     cout << "1. Show training sessions\n";
     cout << "2. Show goals\n";
     cout << "3. Edit profile\n";
-    int action;
+    cout << "4. Exit app\n";
+    string action;
     cin >> action;
-    switch(action){
-        case 1:
+    if (action != "1" && action != "2" && action != "3" && action != "4") {
+        cout << "Invalid action. Please try again.\n";
+        start();
+        return;
+    }
+    switch(action[0]){
+        case '1':
             showWorkouts();
             break;
 
-        case 2:
+        case '2':
             showGoals();
             break;
 
-        case 3:
+        case '3':
             editProfile();
             break;
-
+        
+        case '4':
+            break;
+            
         default:
             cout << "Action is undefined";
-            start();
             break;
     }
 }
@@ -57,7 +65,7 @@ void Terminal::showWorkouts() {
         for(auto it : data){
             if(it.getId() == stoi(action))
             {
-                flag == true;
+                flag = true;
                 w = it;
             }
         }
@@ -78,7 +86,7 @@ void Terminal::showGoals(){
     {
         cout << data[i].getId() << " . " << data[i].getGoal() << endl;
     }
-    cout << "Write 'add' to add new goal\n";
+    cout << "Write 'add' to add new goal or 'back' to back to the start\n";
     cout << "Choose goal ID or add: ";
     string action;
     cin >> action;
@@ -93,7 +101,7 @@ void Terminal::showGoals(){
         for(auto it : data){
             if(it.getId() == stoi(action))
             {
-                flag == true;
+                flag = true;
                 g = it;
             }
         }
@@ -213,24 +221,29 @@ void Terminal::actionsWorkout(Workout workout) {
     cout << "1. Edit workout \n";
     cout << "2. Delete workout \n";
     cout << "3. Go back \n";
-    int action;
+    string action;
     cin >> action;
-    switch(action){
-        case 1:
+    if (action != "1" && action != "2" && action != "3") {
+        cout << "Invalid action. Please try again.\n";
+        actionsWorkout(workout);
+        return;
+    }
+    switch(action[0]){
+        case '1':
             editWorkout(workout);
             break;
 
-        case 2:
+        case '2':
             database.deleteWorkout(workout);
+            showWorkouts();
             break;
 
-        case 3:
+        case '3':
             showWorkouts();
             break;
 
         default:
             cout << "Action is undefined";
-            actionsWorkout(workout);
             break;
     }
 }
@@ -240,24 +253,29 @@ void Terminal::actionsGoal(Goal goal){
     cout << "1. Edit goal \n";
     cout << "2. Delete goal \n";
     cout << "3. Go back \n";
-    int action;
+    string action;
     cin >> action;
-    switch(action){
-        case 1:
+    if (action != "1" && action != "2" && action != "3") {
+        cout << "Invalid action. Please try again.\n";
+        actionsGoal(goal);
+        return;
+    }
+    switch(action[0]){
+        case '1':
             editGoal(goal);
             break;
 
-        case 2:
+        case '2':
             database.deleteGoal(goal);
+            showGoals();
             break;
 
-        case 3:
-            showWorkouts();
+        case '3':
+            showGoals();
             break;
 
         default:
-            cout << "Action is undefined";
-            actionsGoal(goal);
+            cout << "Action is undefined\n";
             break;
     }
 }

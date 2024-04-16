@@ -5,6 +5,7 @@ Date::Date(int day, int month, int year)
 
 Date::Date(){
 }
+
 int Date::getDay() const {
     return day;
 }
