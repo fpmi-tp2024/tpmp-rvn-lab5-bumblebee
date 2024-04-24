@@ -4,10 +4,9 @@
 using namespace std;
 
 Terminal::Terminal(){
-    user = User();
-    database = Database();
 }
 void Terminal::start(){
+    cout << "\033[2J\033[1;1H";
     cout << "Select an action: \n";
     cout << "1. Show training sessions\n";
     cout << "2. Show goals\n";
@@ -43,6 +42,7 @@ void Terminal::start(){
 }
 
 void Terminal::showWorkouts() {
+    cout << "\033[2J\033[1;1H";
     vector<Workout> data = database.getWorkouts();
     for(auto it : data)
     {
@@ -81,6 +81,7 @@ void Terminal::showWorkouts() {
 }
 
 void Terminal::showGoals(){
+    cout << "\033[2J\033[1;1H";
     vector<Goal> data = database.getGoals();
      for(int i = 0; i < data.size(); i++)
     {
@@ -117,6 +118,8 @@ void Terminal::showGoals(){
 }
 
 void Terminal::editProfile(){
+    cout << "\033[2J\033[1;1H";
+    user = database.getProfile();
     std::string name;
     int age;
     double height;
@@ -144,6 +147,7 @@ void Terminal::editProfile(){
 }
 
 void Terminal::editWorkout(Workout workout){
+    cout << "\033[2J\033[1;1H";
     int duration;
     int typeInt;
     int day, month, year;
@@ -154,8 +158,19 @@ void Terminal::editWorkout(Workout workout){
     std::cin >> duration;
     workout.setDuration(duration);
 
-    std::cout << "Enter new workout type (0 - CARDIO, 1 - HIIT, 2 - UPPER, ...): ";
-    std::cin >> typeInt;
+    std::cout << "Enter new workout type (0 - CARDIO, 1 - HIIT, 2 - UPPER, 3 - CHEST,4 - BACK,5 - ARMS,6 - LOWER,7 - GLUTES,8 - LEGS,9 - CORE,10 - ABS,11 - RUNNING,12 - CYCLING,13 - SWIMMING,14 - YOGA,15 - PILATES): ";
+    while(true)
+    {
+        std::cin >> typeInt;
+        if(typeInt < 0 || typeInt > 15)
+        {
+            std::cout << "Invalid type, try again: ";
+        }
+        else{
+            break;
+        }
+    }
+    
     WorkoutType newType = static_cast<WorkoutType>(typeInt);
     workout.setType(newType);
 
@@ -168,6 +183,7 @@ void Terminal::editWorkout(Workout workout){
 }
 
 void Terminal::editGoal(Goal goal){
+    cout << "\033[2J\033[1;1H";
     std::string newGoal;
 
     std::cout << "Current goal ID: " << goal.getId() << std::endl;
@@ -179,44 +195,56 @@ void Terminal::editGoal(Goal goal){
     showGoals();
 }
 
+void Terminal::editConfiguration()
+{
+}
 void Terminal::addWorkout(){
+    cout << "\033[2J\033[1;1H";
     int id, duration;
     int typeInt;
     int day, month, year;
 
-    std::cout << "Enter workout ID: ";
-    std::cin >> id;
 
     std::cout << "Enter workout duration (in minutes): ";
     std::cin >> duration;
 
-    std::cout << "Enter workout type (0 - CARDIO, 1 - HIIT, 2 - UPPER, ...): ";
-    std::cin >> typeInt;
+    std::cout << "Enter workout type (0 - CARDIO, 1 - HIIT, 2 - UPPER, 3 - CHEST,4 - BACK,5 - ARMS,6 - LOWER,7 - GLUTES,8 - LEGS,9 - CORE,10 - ABS,11 - RUNNING,12 - CYCLING,13 - SWIMMING,14 - YOGA,15 - PILATES): ";
+   while(true)
+    {
+        std::cin >> typeInt;
+        if(typeInt < 0 || typeInt > 15)
+        {
+            std::cout << "Invalid type, try again: ";
+        }
+        else{
+            break;
+        }
+    }
     WorkoutType type = static_cast<WorkoutType>(typeInt);
 
     std::cout << "Enter workout date (day month year): ";
     std::cin >> day >> month >> year;
     Date date(day, month, year);
 
-    database.addWorkout(Workout(id, duration, type, date));
+    database.addWorkout(Workout(1, duration, type, date));
     showWorkouts();
 }
 
 void Terminal::addGoal(){
+    cout << "\033[2J\033[1;1H";
     int id;
     std::string goal;
 
-    std::cout << "Enter goal ID: ";
-    std::cin >> id;
 
     std::cout << "Enter goal: ";
     std::cin.ignore(); 
     std::getline(std::cin, goal);
-    database.addGoal(Goal(id,goal));
+    database.addGoal(Goal(1,goal));
     showGoals();
 }
 
 void Terminal::actionsWorkout(Workout workout) {
+    cout << "\033[2J\033[1;1H";
     cout << "Select an action: \n";
     cout << "1. Edit workout \n";
     cout << "2. Delete workout \n";
@@ -249,6 +277,7 @@ void Terminal::actionsWorkout(Workout workout) {
 }
 
 void Terminal::actionsGoal(Goal goal){
+    cout << "\033[2J\033[1;1H";
     cout << "Select an action: \n";
     cout << "1. Edit goal \n";
     cout << "2. Delete goal \n";

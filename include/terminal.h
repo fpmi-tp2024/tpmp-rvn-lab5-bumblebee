@@ -21,6 +21,7 @@ class Terminal {
     void addWorkout() ;
     void addGoal();
     void editGoal(Goal goal);
+    void editConfiguration();
     void actionsWorkout(Workout workout);
     void actionsGoal(Goal goal);
 };
