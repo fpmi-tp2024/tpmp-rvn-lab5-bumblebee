@@ -1,37 +1,37 @@
 build: build-main build-sqlite3 build-callback build-database build-date build-goal build-terminal build-user build-workout
-	gcc -o main ./obj/main.o ./obj/sqlite3.o ./obj/callback.o ./obj/database.o ./obj/date.o ./obj/goal.o ./obj/terminal.o ./obj/user.o ./obj/workout.o
+	g++ -o main ./obj/main.o ./obj/sqlite3.o ./obj/callback.o ./obj/database.o ./obj/date.o ./obj/goal.o ./obj/terminal.o ./obj/user.o ./obj/workout.o
 	mv ./main ./bin/
 
 build-main:
-	gcc -c ./src/main.c
+	g++ -c ./src/main.cpp
 	mv ./main.o ./obj/
 
 build-sqlite3:
-	gcc -c ./src/sqlite3.c
+	g++ -c ./src/sqlite3.cpp
 	mv ./sqlite3.o ./obj/
 
 build-database:
-	gcc -c ./src/database.c
+	g++ -c ./src/database.cpp
 	mv ./database.o ./obj/
 
 build-date:
-	gcc -c ./src/date.c
+	g++ -c ./src/date.cpp
 	mv ./date.o ./obj/
 
 build-goal:
-	gcc -c ./src/goal.c
+	g++ -c ./src/goal.cpp
 	mv ./goal.o ./obj/
 
 build-terminal:
-	gcc -c ./src/terminal.c
+	g++ -c ./src/terminal.cpp
 	mv ./terminal.o ./obj/
 
 build-user:
-	gcc -c ./src/user.c
+	g++ -c ./src/user.cpp
 	mv ./user.o ./obj/
 
 build-workout:
-	gcc -c ./src/workout.c
+	g++ -c ./src/workout.cpp
 	mv ./workout.o ./obj/
 
 clean:
