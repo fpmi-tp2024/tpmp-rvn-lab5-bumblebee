@@ -1,10 +1,9 @@
 build: build-main build-sqlite3 build-callback build-database build-date build-goal build-terminal build-user build-workout
-
 	g++ -o main ./obj/main.o ./obj/sqlite3.o ./obj/callback.o ./obj/database.o ./obj/date.o ./obj/goal.o ./obj/terminal.o ./obj/user.o ./obj/workout.o
 	mv ./main ./bin/
 
 build-main:
-        mkdir bin obj
+	mkdir bin obj
 	g++ -c ./src/main.cpp
 	mv ./main.o ./obj/
 
