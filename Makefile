@@ -8,7 +8,7 @@ build-main:
 	mv ./main.o ./obj/
 
 build-sqlite3:
-	g++ -c ./src/sqlite3.cpp
+	gcc -c ./src/sqlite3.c
 	mv ./sqlite3.o ./obj/
 
 build-database:
