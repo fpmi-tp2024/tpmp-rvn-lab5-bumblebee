@@ -1,13 +1,13 @@
 test: build-test build-sqlite3 build-database build-date build-goal build-terminal build-user build-workout
 	g++ -o test ./obj/test.o ./obj/sqlite3.o ./obj/database.o ./obj/date.o ./obj/goal.o ./obj/terminal.o ./obj/user.o ./obj/workout.o
 	mv ./test ./bin/
+	./bin/test
 
 build: build-main build-sqlite3 build-database build-date build-goal build-terminal build-user build-workout
 	g++ -o main ./obj/main.o ./obj/sqlite3.o ./obj/database.o ./obj/date.o ./obj/goal.o ./obj/terminal.o ./obj/user.o ./obj/workout.o
 	mv ./main ./bin/
 
 build-test:
-	mkdir bin obj
 	g++ -c ./tests/test.cpp
 	mv ./test.o ./obj/
 
