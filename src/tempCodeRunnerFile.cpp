@@ -1,1 +1,0 @@
-cl ./src/database.cpp ./src/date.cpp  ./src/goal.cpp ./src/main.cpp ./src/terminal.cpp ./src/user.cpp ./src/workout.cpp ./src/sqlite3.c
