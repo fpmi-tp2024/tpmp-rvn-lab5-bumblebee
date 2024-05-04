@@ -37,6 +37,8 @@ Testing is vital during development to ensure functionality, input validation, d
 
 By building the Fitness Tracker application with C and SQLite, developers can enhance programming skills and gain experience in creating database-driven applications. Customize features and functionality as needed.
 
+We have proposed a catch testing environment and a set of tests with a code coverage of 88.354167%.
+
 # Functionality
 
 ## Use-case
