@@ -285,6 +285,14 @@ classDiagram
         +printInfo() void
     }
 
+    class Goal {
+        -id : int
+        -goal : string
+        +getId() int
+        +getGoal() string
+        +setGoal(string) bool
+    }
+
     class User {
         -name : string
         -age : int
@@ -312,12 +320,35 @@ classDiagram
     class Database {
         -workouts: List~Workout~
         -goals: List~string~
+        -database: sqlite3*
+        +deleteWorkout() bool
+        +deleteGoal() bool
+        +addWorkout() bool
+        +addGoal() bool
+        +editWorkout() bool
+        +editGoal() bool
+        +editProfile() bool
+    }
+
+    class Terminal {
+        +start() bool
+        +showWorkouts() bool
+        +showGoals() bool
+        +editWorkout() bool
+        +editGoal() bool
+        +editProfile() bool
+        +editProfile() bool
+        +actionsWorkout() bool
+        +actionGoal() bool
     }
     
     Workout "*" --* Database
     Workout <-- "1" WorkoutType
     Workout *-- "1" Date
-    User .. Database
+    User "1" .. Database
+    Goal "*" ..* Database
+    User "1" --* Terminal
+    Database "1" --* Terminal
     
  ```
 
