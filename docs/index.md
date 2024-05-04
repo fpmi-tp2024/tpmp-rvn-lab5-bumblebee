@@ -38,3 +38,104 @@ Testing is vital during development to ensure functionality, input validation, d
 By building the Fitness Tracker application with C and SQLite, developers can enhance programming skills and gain experience in creating database-driven applications. Customize features and functionality as needed.
 
 Enjoy tracking your fitness journey with the Fitness Tracker application!
+
+# Functionality
+
+## Use-case
+
+This use-case diagram represents a fitness application where a user can perform various actions. The user can delete a workout, add a workout, edit a workout, set a goal, track progress, view statistics, and change their profile. These actions are all performed through the application, which interacts with a database for validation and storage of user information.
+
+Case #1 (Interacting with the information about workouts):
+1. User enters the application.
+2. User selects the option to delete a workout, to add a new workout or to edit an existing workout.
+3. User interacts with the workout edit feature.
+4. The application saves the data to the database.
+5. Finishing session.
+
+Case #2 (Interacting with the information about goals):
+1. User enters the application.
+2. User selects the option to add a goal or to track a goal.
+3. User interacts with the goal setting feature or the goal tracking feature
+4. User views statistics regarding their workouts.
+5. The application saves the data to the database.
+6. Finishing session.
+
+Case #3 (Interacting with the profile information)
+1. User enters the application.
+2. User selects the option to edit a profile info.
+3. User interacts with the profile edit feature.
+4. The application saves the data to the database.
+5. Finishing session.
+
+ ```mermaid
+
+---
+title: Case diagram
+---
+
+flowchart TD;
+
+    User((User))-->Action_1[Delete workout]-. extends .->Action_3[Edit workout]
+    User((User))-->Action_2[Add workout]-. extends .->Action_3[Edit workout]
+    User((User))-->Action_3[Edit workout]-->Application((Application))
+    User((User))-->Action_4[Set goal]-->Application((Application))
+    User((User))-->Action_5[Track progress]-->Application((Application))
+    User((User))-->Action_6[View Statistics]-->Application((Application))-->Database[(Database)]
+    User((User))-->Action_7[Change profile]-->Application((Application))-->Action_8[Validate]-->Database[(Database)]
+
+ ```
+
+## User Sequences
+
+ ```mermaid
+
+---
+title: Sequence diagram
+---
+
+sequenceDiagram
+
+    User->>Application: login
+    par Verification
+        loop hourly
+            Application->>+User: check login
+            User-->>-Application: login
+            alt success
+                Application-->>User: continue session
+            else fail
+                Application-->>User: finish session
+            end
+        end
+    and Session
+        User-->>+Application: session
+        par interact workout
+            User-->>Application: edit a workout
+            alt success
+                Application-->>Database: update info
+            else fail
+                Application-->>User: error message
+            end
+        and interact goals
+            User-->>Application: edit a goal
+            alt success
+                Application-->>Database: update info
+            else fail
+                Application-->>User: error message
+            end
+        and interact statistics
+            User-->>Application: show statistics
+            Application-->>User: statistics message
+        and interact profile
+            User-->>Application: edit a profile
+            alt success
+                Application-->>Database: update info
+            else fail
+                Application-->>User: error message
+            end
+        end
+    end
+
+ ```
+
+ ```mermaid
+
